@@ -321,7 +321,7 @@ function ChatbotContent() {
                     <div
                       className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                         message.sender === "user"
-                          ? "bg-green-600 text-white"
+                          ? "bg-green-600 text-black"
                           : "bg-gray-100 text-gray-800"
                       }`}
                     >
