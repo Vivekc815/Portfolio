@@ -158,7 +158,7 @@ export default function Home() {
           {/* Add the floating button near the avatar */}
           <div className="relative">
             <div className="rounded-full shadow-2xl shadow-green-200/30 bg-white/80 backdrop-blur-lg p-2 mb-2">
-              <Image src="/AppleMemojis.jfif" alt="Memoji Avatar" width={160} height={160} className="rounded-full object-cover border-4 border-green-400" priority />
+              <Image src="/AppleMemojis1.jfif" alt="Memoji Avatar" width={160} height={160} className="rounded-full object-cover border-4 border-green-400" priority />
             </div>
             <button
               onClick={() => setShowInternModal(true)}
@@ -257,7 +257,7 @@ export default function Home() {
             >
               ×
             </button>
-            <Image src="/AppleMemojis.jfif" alt="Memoji Avatar" width={90} height={90} className="rounded-full border-4 border-green-400 shadow mb-3" />
+                          <Image src="/AppleMemojis1.jfif" alt="Memoji Avatar" width={90} height={90} className="rounded-full border-4 border-green-400 shadow mb-3" />
             <h3 className="text-2xl font-bold text-gray-800 mb-1">Vivek C</h3>
             <div className="text-green-700 font-semibold mb-2">Open to Internships: Summer 2026</div>
             <p className="text-gray-700 text-center mb-4">Aspiring Software Engineer skilled in Python, C++, React JS, Node JS, Responsive UI Design, SQL, NoSQL, and Firebase. National-level badminton player, passionate about building efficient systems and learning new technologies.</p>
