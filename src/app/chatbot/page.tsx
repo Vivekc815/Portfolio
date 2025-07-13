@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, ArrowLeft, Bot, User, FileText, Briefcase, Code2, Mail, User as UserIcon } from "lucide-react";
@@ -108,7 +108,7 @@ function IcebreakersCard() {
   );
 }
 
-export default function ChatbotPage() {
+function ChatbotContent() {
   const searchParams = useSearchParams();
   const context = searchParams.get("context") || "general";
   const initialQuery = searchParams.get("query") || "";
@@ -391,5 +391,20 @@ export default function ChatbotPage() {
         </div>
       </div>
     </div>
+  );
+} 
+
+export default function ChatbotPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading chatbot...</p>
+        </div>
+      </div>
+    }>
+      <ChatbotContent />
+    </Suspense>
   );
 } 
