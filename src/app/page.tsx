@@ -155,10 +155,10 @@ export default function Home() {
           transition={{ type: "spring", stiffness: 120, damping: 12 }} 
           className="flex flex-col items-center gap-4"
         >
-          {/* Add the floating button near the avatar */}
+          {/* Add the floating button near the avatar - Updated for Vercel deployment */}
           <div className="relative">
             <div className="rounded-full shadow-2xl shadow-green-200/30 bg-white/80 backdrop-blur-lg p-2 mb-2">
-              <Image src="/AppleMemojis1.jfif" alt="Memoji Avatar" width={160} height={160} className="rounded-full object-cover border-4 border-green-400" priority />
+              <Image src="/AppleMemojis1.jpg" alt="Memoji Avatar" width={160} height={160} className="rounded-full object-cover border-4 border-green-400" priority />
             </div>
             <button
               onClick={() => setShowInternModal(true)}
