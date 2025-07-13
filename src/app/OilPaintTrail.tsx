@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 export default function OilPaintTrail() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const mouse = useRef({ x: 0, y: 0, isMoving: false });
 
   useEffect(() => {
@@ -19,8 +19,10 @@ export default function OilPaintTrail() {
     function resize() {
       width = window.innerWidth;
       height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
+      if (canvas) {
+        canvas.width = width;
+        canvas.height = height;
+      }
     }
     window.addEventListener("resize", resize);
 
