@@ -216,7 +216,7 @@ export default function Home() {
               placeholder="Ask me anything..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-6 py-4 rounded-2xl bg-white/70 backdrop-blur-md border border-white/50 shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-lg placeholder:text-gray-500"
+              className="w-full px-6 py-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/70 shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-gray-900 placeholder:text-gray-800 text-base md:text-lg"
             />
             {isSearching && (
               <div className="absolute right-4 top-1/2 transform -translate-y-1/2">

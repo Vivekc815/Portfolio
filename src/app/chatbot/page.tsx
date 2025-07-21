@@ -375,7 +375,7 @@ function ChatbotContent() {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder="Type your message..."
-                className="flex-1 px-4 py-3 rounded-xl bg-white/50 border border-white/50 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                className="flex-1 px-4 py-3 rounded-xl bg-white/90 border border-white/70 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-gray-900 placeholder:text-gray-800 text-base md:text-lg"
                 disabled={isTyping}
               />
               <button

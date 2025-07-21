@@ -102,7 +102,28 @@ export async function POST(request: NextRequest) {
     if (isPersonalQuestion(message)) {
       console.log('Personal question detected, using local responses');
       source = 'custom'; // Set source to 'custom' for personal questions
-      
+
+      // UNIVERSAL SKILLS CARD: If the message is about skills, always show the skills card
+      if (/(skill|skills|technology|technologies|tech|programming)/i.test(lowerMessage)) {
+        response = `
+          <div class="rounded-xl bg-white/80 shadow p-4 flex flex-col gap-2">
+            <div class="font-semibold text-lg flex items-center gap-2">
+              💻 Technical Skills
+            </div>
+            <div class="text-gray-700">
+              <p><strong>Programming Languages:</strong> Python, C++, Embedded C, Java, JavaScript, TypeScript</p>
+              <p><strong>Web Development:</strong> Next.js, React JS, Responsive UI Design, HTML, CSS, Tailwind CSS</p>
+              <p><strong>Databases:</strong> Firebase, SQL, NoSQL, MongoDB, PostgreSQL</p>
+              <p><strong>AI & Machine Learning:</strong> OpenCV, Random Forest, TensorFlow, Scikit-learn</p>
+              <p><strong>Tools & Version Control:</strong> Git, SDOM, ASCET, ECUTEST, Docker, AWS</p>
+              <p><strong>Embedded Systems:</strong> Microcontrollers, Real-time Systems, Hardware Programming</p>
+              <p><strong>Other:</strong> REST APIs, WebSockets, Microservices, CI/CD</p>
+            </div>
+          </div>
+        `;
+        return NextResponse.json({ message: response, source, image });
+      }
+
       switch (context) {
         case 'contact':
           if (lowerMessage.includes('email') || lowerMessage.includes('mail') || lowerMessage.includes('contact')) {
@@ -125,7 +146,8 @@ export async function POST(request: NextRequest) {
           break;
 
         case 'skills':
-          if (lowerMessage.includes('skill') || lowerMessage.includes('technology') || lowerMessage.includes('tech') || lowerMessage.includes('programming')) {
+          // Only respond with skills card if the message explicitly mentions skills or related terms
+          if (/(skill|skills|technology|technologies|tech|programming)/i.test(lowerMessage)) {
             response = `
               <div class="rounded-xl bg-white/80 shadow p-4 flex flex-col gap-2">
                 <div class="font-semibold text-lg flex items-center gap-2">
@@ -240,7 +262,25 @@ export async function POST(request: NextRequest) {
           break;
 
         case 'me':
-          if (lowerMessage.includes('about') || lowerMessage.includes('who') || lowerMessage.includes('background') || lowerMessage.includes('interest')) {
+          // If the message is about skills, show the skills card
+          if (/(skill|skills|technology|technologies|tech|programming)/i.test(lowerMessage)) {
+            response = `
+              <div class="rounded-xl bg-white/80 shadow p-4 flex flex-col gap-2">
+                <div class="font-semibold text-lg flex items-center gap-2">
+                  💻 Technical Skills
+                </div>
+                <div class="text-gray-700">
+                  <p><strong>Programming Languages:</strong> Python, C++, Embedded C, Java, JavaScript, TypeScript</p>
+                  <p><strong>Web Development:</strong> Next.js, React JS, Responsive UI Design, HTML, CSS, Tailwind CSS</p>
+                  <p><strong>Databases:</strong> Firebase, SQL, NoSQL, MongoDB, PostgreSQL</p>
+                  <p><strong>AI & Machine Learning:</strong> OpenCV, Random Forest, TensorFlow, Scikit-learn</p>
+                  <p><strong>Tools & Version Control:</strong> Git, SDOM, ASCET, ECUTEST, Docker, AWS</p>
+                  <p><strong>Embedded Systems:</strong> Microcontrollers, Real-time Systems, Hardware Programming</p>
+                  <p><strong>Other:</strong> REST APIs, WebSockets, Microservices, CI/CD</p>
+                </div>
+              </div>
+            `;
+          } else if ((/about yourself|who are you|tell me about yourself|about me|yourself|who are you|who am i|who is vivek/i.test(lowerMessage))) {
             response = `
               <div class="rounded-xl bg-white/80 shadow p-4 flex flex-col gap-2">
                 <div class="font-semibold text-lg flex items-center gap-2">
