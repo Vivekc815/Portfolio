@@ -284,10 +284,10 @@ function ChatbotContent() {
       </div>
 
       {/* Chat Container */}
-      <div className="max-w-4xl mx-auto px-4 py-6">
-        <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-white/50 h-[600px] flex flex-col">
+      <div className="max-w-4xl mx-auto px-2 sm:px-4 py-4 sm:py-6">
+        <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-white/50 min-h-[400px] sm:h-[600px] flex flex-col w-full">
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-4">
+          <div className="flex-1 overflow-y-auto p-2 sm:p-6 space-y-2 sm:space-y-4">
             <AnimatePresence>
               {messages.map((message) => (
                 <motion.div
@@ -298,15 +298,15 @@ function ChatbotContent() {
                   className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   {message.sender === "bot" && message.source === "custom" ? (
-                    <div className="flex items-start gap-3">
-                      <Image src="/vivek.jpg" alt="Vivek's Avatar" width={40} height={40} className="rounded-full border-2 border-green-400 shadow-md mt-1" />
-                      <div className={`max-w-[80%] rounded-2xl px-4 py-3 bg-gray-100 text-gray-800`}>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <Image src="/vivek.jpg" alt="Vivek's Avatar" width={32} height={32} className="rounded-full border-2 border-green-400 shadow-md mt-1 w-8 h-8 sm:w-10 sm:h-10" />
+                      <div className={`max-w-[90vw] sm:max-w-[80%] rounded-2xl px-2 sm:px-4 py-2 sm:py-3 bg-gray-100 text-gray-800`}>
                         {renderMessageContent(message)}
                         {message.image && (
                           <img
                             src={message.image}
                             alt="Vivek's photo"
-                            className="mt-3 rounded-full w-40 h-40 object-cover border-2 border-green-400 shadow-md"
+                            className="mt-2 sm:mt-3 rounded-full w-24 h-24 sm:w-40 sm:h-40 object-cover border-2 border-green-400 shadow-md"
                           />
                         )}
                         <div className="flex items-center justify-between mt-1">
@@ -319,7 +319,7 @@ function ChatbotContent() {
                     </div>
                   ) : (
                     <div
-                      className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                      className={`max-w-[90vw] sm:max-w-[80%] rounded-2xl px-2 sm:px-4 py-2 sm:py-3 ${
                         message.sender === "user"
                           ? "bg-green-600 text-black"
                           : "bg-gray-100 text-gray-800"
@@ -330,7 +330,7 @@ function ChatbotContent() {
                         <img
                           src={message.image}
                           alt="Vivek's photo"
-                          className="mt-3 rounded-full w-40 h-40 object-cover border-2 border-green-400 shadow-md"
+                          className="mt-2 sm:mt-3 rounded-full w-24 h-24 sm:w-40 sm:h-40 object-cover border-2 border-green-400 shadow-md"
                         />
                       )}
                       <div className="flex items-center justify-between mt-1">
@@ -355,7 +355,7 @@ function ChatbotContent() {
                 animate={{ opacity: 1, y: 0 }}
                 className="flex justify-start"
               >
-                <div className="bg-gray-100 text-gray-800 rounded-2xl px-4 py-3">
+                <div className="bg-gray-100 text-gray-800 rounded-2xl px-2 sm:px-4 py-2 sm:py-3">
                   <div className="flex space-x-1">
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -368,23 +368,23 @@ function ChatbotContent() {
           </div>
 
           {/* Input */}
-          <div className="p-6 border-t border-white/50">
-            <form onSubmit={handleSubmit} className="flex gap-3">
+          <div className="p-2 sm:p-6 border-t border-white/50">
+            <form onSubmit={handleSubmit} className="flex gap-2 sm:gap-3">
               <input
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder="Type your message..."
-                className="flex-1 px-4 py-3 rounded-xl bg-white/90 border border-white/70 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-gray-900 placeholder:text-gray-800 text-base md:text-lg"
+                className="flex-1 px-2 sm:px-4 py-2 sm:py-3 rounded-xl bg-white/90 border border-white/70 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-gray-900 placeholder:text-gray-800 text-sm sm:text-base md:text-lg"
                 disabled={isTyping}
               />
               <button
                 type="submit"
                 disabled={!inputMessage.trim() || isTyping}
-                className="px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+                className="px-3 sm:px-6 py-2 sm:py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-1 sm:gap-2 text-xs sm:text-base"
               >
                 <Send className="w-4 h-4" />
-                Send
+                <span className="hidden sm:inline">Send</span>
               </button>
             </form>
           </div>

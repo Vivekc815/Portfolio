@@ -148,7 +148,7 @@ export default function Home() {
         </div>
 
       {/* Main content */}
-      <main className="relative z-10 flex flex-col items-center justify-center w-full max-w-2xl mx-auto px-4 pt-24 pb-12">
+      <main className="relative z-10 flex flex-col items-center justify-center w-full max-w-2xl mx-auto px-2 sm:px-4 pt-10 sm:pt-24 pb-6 sm:pb-12">
         <motion.div 
           initial={{ scale: 0.8, opacity: 0 }} 
           animate={{ scale: 1, opacity: 1 }} 
@@ -157,66 +157,58 @@ export default function Home() {
         >
           {/* Add the floating button near the avatar - Updated for Vercel deployment */}
           <div className="relative">
-            <div className="rounded-full shadow-2xl shadow-green-200/30 bg-white/80 backdrop-blur-lg p-2 mb-2">
-              <Image src="/AppleMemojis1.jpg" alt="Memoji Avatar" width={160} height={160} className="rounded-full object-cover border-4 border-green-400" priority />
+            <div className="rounded-full shadow-2xl shadow-green-200/30 bg-white/80 backdrop-blur-lg p-1 sm:p-2 mb-2">
+              <Image src="/AppleMemojis1.jpg" alt="Memoji Avatar" width={120} height={120} className="rounded-full object-cover border-4 border-green-400 sm:w-[160px] sm:h-[160px] w-[100px] h-[100px]" priority />
             </div>
             <button
               onClick={() => setShowInternModal(true)}
-              className="absolute left-1/2 -bottom-4 -translate-x-1/2 px-5 py-2 bg-green-600 text-white rounded-full shadow-lg border-2 border-white/80 hover:bg-green-700 transition-all text-sm font-semibold z-10"
-              style={{ minWidth: 180 }}
+              className="absolute left-1/2 -bottom-4 -translate-x-1/2 px-3 sm:px-5 py-2 bg-green-600 text-white rounded-full shadow-lg border-2 border-white/80 hover:bg-green-700 transition-all text-xs sm:text-sm font-semibold z-10"
+              style={{ minWidth: 120 }}
             >
               🟢 Open to Internships
             </button>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 text-center">Hey, I'm Vivek</h2>
-          {/* Replace the intro text with a more prominent, modern font */}
-          <p className="text-xl sm:text-2xl font-bold text-emerald-700 text-center max-w-md font-[var(--font-montserrat)] mt-2">
+          <h2 className="text-lg sm:text-2xl md:text-3xl font-semibold text-gray-800 text-center">Hey, I'm Vivek</h2>
+          <p className="text-base sm:text-xl md:text-2xl font-bold text-emerald-700 text-center max-w-xs sm:max-w-md font-[var(--font-montserrat)] mt-2">
             Computer Science student at University of Florida
           </p>
         </motion.div>
-
-        {/* 1. Animated scroll-down indicator below hero */}
         <motion.div 
           initial={{ opacity: 0, y: 10 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ delay: 1, type: "spring", stiffness: 80 }}
-          className="flex flex-col items-center mt-8"
+          className="flex flex-col items-center mt-4 sm:mt-8"
         >
-          <span className="text-gray-700 text-sm mb-1 font-semibold">Scroll down</span>
-          <span className="animate-bounce text-3xl text-gray-800">↓</span>
+          <span className="text-gray-700 text-xs sm:text-sm mb-1 font-semibold">Scroll down</span>
+          <span className="animate-bounce text-2xl sm:text-3xl text-gray-800">↓</span>
         </motion.div>
-
-        {/* 2. Wavy SVG divider below hero */}
         <div className="w-full overflow-hidden -mb-2">
-          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-12">
+          <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-8 sm:h-12">
             <path fill="#d1fae5" fillOpacity="1" d="M0,32L60,37.3C120,43,240,53,360,58.7C480,64,600,64,720,58.7C840,53,960,43,1080,42.7C1200,43,1320,53,1380,58.7L1440,64L1440,80L1380,80C1320,80,1200,80,1080,80C960,80,840,80,720,80C600,80,480,80,360,80C240,80,120,80,60,80L0,80Z" />
           </svg>
         </div>
-
         <motion.h1 
           initial={{ y: 40, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }} 
           transition={{ delay: 0.2, type: "spring", stiffness: 100 }} 
-          className="mt-8 text-5xl sm:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 drop-shadow-lg text-center"
+          className="mt-4 sm:mt-8 text-3xl sm:text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 drop-shadow-lg text-center"
         >
           AI Portfolio
         </motion.h1>
-
-        {/* Search box */}
         <motion.form 
           initial={{ y: 30, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }} 
           transition={{ delay: 0.4, type: "spring", stiffness: 100 }} 
           onSubmit={handleSearch}
-          className="w-full flex justify-center mt-8"
+          className="w-full flex justify-center mt-4 sm:mt-8"
         >
-          <div className="relative w-full max-w-md">
+          <div className="relative w-full max-w-xs sm:max-w-md">
             <input 
               type="text" 
               placeholder="Ask me anything..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-6 py-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/70 shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-gray-900 placeholder:text-gray-800 text-base md:text-lg"
+              className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/90 backdrop-blur-md border border-white/70 shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent text-gray-900 placeholder:text-gray-800 text-sm sm:text-base md:text-lg"
             />
             {isSearching && (
               <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
@@ -225,22 +217,20 @@ export default function Home() {
             )}
           </div>
         </motion.form>
-
-        {/* Glassmorphism nav buttons */}
         <motion.div 
           initial={{ y: 30, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }} 
           transition={{ delay: 0.6, type: "spring", stiffness: 100 }} 
-          className="flex flex-wrap justify-center gap-4 mt-10 w-full"
+          className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-6 sm:mt-10 w-full"
         >
           {navButtons.map(({ label, icon: Icon, href }) => (
             <button 
               key={label} 
               onClick={() => handleNavClick(href)}
-              className="flex flex-col items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/70 backdrop-blur-md border border-white/50 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 min-w-[90px] max-w-[120px] group"
+              className="flex flex-col items-center justify-center gap-1 sm:gap-2 px-3 sm:px-6 py-2 sm:py-4 rounded-2xl bg-white/70 backdrop-blur-md border border-white/50 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 min-w-[70px] sm:min-w-[90px] max-w-[100px] sm:max-w-[120px] group"
             >
-              <Icon className="w-7 h-7 text-green-600 group-hover:text-green-700 transition-colors" />
-              <span className="text-base font-semibold text-gray-700 group-hover:text-gray-800 transition-colors">{label}</span>
+              <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-green-600 group-hover:text-green-700 transition-colors" />
+              <span className="text-xs sm:text-base font-semibold text-gray-700 group-hover:text-gray-800 transition-colors">{label}</span>
             </button>
           ))}
         </motion.div>
